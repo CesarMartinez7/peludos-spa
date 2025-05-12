@@ -1,0 +1,90 @@
+<header
+  ngSkipHydration
+  [ngClass]="typeActivate === 'activo' ? 'bg-primary text-white' :
+              typeActivate === 'activo2' ? 'bg-white text-[#008bd4]' :
+              'bg-white z-50 shadow-md text-dark-blue transition-all'"
+  class="p-4 md:px-4 flex flex-row justify-between w-full whitespace-nowrap sticky top-0 py-4 z-59 transition-all transition-discrete fade"
+>
+  @if (typeActivate === 'activo' || typeActivate === 'activo2') {
+    <div class="items-center gap-2 justify-between w-full h-full flex flex-row transition-discrete transition-all duration-200">
+      <nav class="flex flex-row justify-between items-center w-full gap-8">
+        <button
+          class="block md:hidden"
+          title="navburger"
+          (click)="openSidebarFunction()"
+        >
+          <img
+            src="icons/navburger.svg"
+            [src]="typeActivate === `activo` ? `icons/navburger-white.svg` : `icons/navburger-primary.svg`  "
+            alt=""
+            class="w-[20px] h-[20px] text-pretty"
+            [ngClass]="typeActivate === 'activo' ? 'text-white' : 'text-[#008bd4]'"
+          />
+        </button>
+
+        <div class="flex w-[130px] gap-4 justify-center items-center">
+          <a
+            href="https://www.segurosmundial.com.co"
+            title="Logo de mundial"
+            target="_blank"
+          >
+            <img
+              class="max-w-[130px] w-full h-auto"
+              [src]="typeActivate === 'activo' ? 'images/segurosmd.svg' : 'images/logomundialblue.svg'"
+              alt="Logo"
+            />
+          </a>
+        </div>
+
+        <ul class="hidden xl:flex flex-row gap-x-12 w-full list-none justify-center text-sm">
+          @for (item of routes; track $index) {
+            <li
+              class="px-2 text-sm justify-center items-center transition-all duration-150 hover:scale-105"
+              [ngClass]="typeActivate === 'activo' ? 'border-content' : 'border-content2'"
+            >
+              <a
+                [href]="item.url"
+                class="text-sm"
+                (click)="scrollTo(item.id)"
+              >
+                {{ item.name }}
+              </a>
+            </li>
+          }
+        </ul>
+
+        <div class="flex gap-3">
+          <a
+            routerLink="/contact"
+            class="hidden lg:flex border rounded-full items-center justify-center text-xs md:text-md h-[36px] md:w-[144px]"
+            [ngClass]="typeActivate === 'activo' ? 'border-white text-white' : 'border-primary text-[#008bd4]'"
+          >
+            CONTÁCTANOS
+          </a>
+
+          <button
+            (click)="scrollTo('compraseguro')"
+            class="hidden md:flex justify-center items-center rounded-full text-xs md:text-md h-[36px] md:w-[200px]"
+            [ngClass]="typeActivate === 'activo'
+              ? 'border border-white text-white'
+              : 'btn-yellow-three'"
+          >
+            ¡COMPRA TU SEGURO!
+          </button>
+        </div>
+      </nav>
+    </div>
+  }
+
+  @if (typeActivate === 'null') {
+    <div class="p-2 flex justify-center items-center w-full">
+      <img class="md:w-[108px] h-[24px]" src="images/logomundialblue.svg" alt="" />
+      <button
+        routerLink="/contact"
+        class="border absolute right-5 flex font-bold items-center p-1 md:text-md text-xs justify-center border-primary rounded-full text-dark-blue md:w-[144px] h-[36px]"
+      >
+        CONTACTANOS
+      </button>
+    </div>
+  }
+</header>

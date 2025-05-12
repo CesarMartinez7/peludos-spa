@@ -1,1 +1,402 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/Ubuntu-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/Ubuntu-Regular.ttf") format("truetype");
+  font-weight: 600;
+}
+
+.is-impar {
+  background: white;
+}
+
+.not-impar {
+  background: #f5fcff;
+}
+
+.not-incluido {
+  @apply bg-[#8ddeee] p-2 flex-col flex min-h-[56px] rounded-t-2xl;
+}
+
+.button-border-primary {
+  @apply border flex font-bold items-center p-1 text-xs justify-center border-primary rounded-full h-[48px] w-[272px] text-[14px] text-dark-blue;
+}
+
+.button-border-primary-custom {
+  @apply border flex font-bold items-center p-1 text-xs justify-center border-primary  w-full rounded-full h-[48px] text-[14px] text-dark-blue bg-white;
+}
+
+.incluido2 {
+  @apply bg-[#ffffff] p-2 flex-col flex min-h-[56px] rounded-b-2xl border border-zinc-300;
+}
+
+.incluido-card {
+  @apply bg-[#8ddeee] p-2 flex-col flex h-[128px] w-[560px] rounded-2xl;
+}
+
+.incluido {
+  @apply bg-[#ffdd5f] p-2 flex-col flex min-h-[56px] rounded-t-2xl;
+}
+
+.incluido-dog-card {
+  @apply bg-[#fccb34]  w-[33px] h-[33px] bg-[#46bccb] rounded-full grid place-content-center;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts.woff2") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/Ubuntu-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/Ubuntu-Medium.ttf") format("truetype");
+}
+
+* {
+  font-family: "Ubuntu" !important;
+  outline: none !important;
+}
+
+.toto2 {
+  height: fit-content;
+  transition: height 2s all;
+}
+
+/* .fade {
+  animation-name: fade-body;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+} */
+
+button {
+  @apply cursor-pointer;
+}
+
+@keyframes fade-body {
+  0% {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@supports (appearance: base-select) {
+  .custom-select {
+    /* 
+      new customizable appearance assignment.
+      this changes what can go inside <select> and 
+      exposes parts you can target and style
+    */
+    &,
+    &::picker(select) {
+      appearance: base-select;
+    }
+
+    /* nice layout for the selected state */
+    selectedcontent {
+      display: flex;
+      align-items: center;
+      gap: 0.5ch;
+
+      /* hide anything not an svg */
+      > :not(svg) {
+        display: none;
+      }
+    }
+
+    /* icon at the end with grid */
+    option {
+      display: grid;
+      grid-template-columns: [icon] auto [content] 1fr [mark] auto;
+
+      &::checkmark {
+        grid-area: 1 / mark;
+      }
+    }
+  }
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #aaaaaa #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ff0080;
+  border-radius: 24px;
+  border: 8px inset #c0c0c0;
+}
+
+.sidebar {
+  @apply bg-white border overflow-x-hidden duration-500 
+         border-zinc-200 text-dark-blue z-[999] text-xs 
+         h-full fixed top-0 left-0 flex-col gap-3 
+         rounded-r-2xl shadow-2xl shadow-cyan-200 
+         w-[250px]; /* eliminado hidden */
+}
+
+@theme {
+  --color-primary: #27d6eb;
+  --color-primarytwo: #20d6eb;
+  --color-bluelight: #8ddeee;
+  --color-secondary: #2febf7;
+  --color-neutral: #8b8b8b;
+  --color-yellow: #f8c845;
+  --color-yellow2: #fccc47;
+  --color-dark-blue: #133447;
+  --color-yellowone: #ffdd5f;
+  --color-gray-one: #6c757d;
+}
+
+.boton-genero {
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+input[type="radio"]:checked + label {
+  @apply bg-yellow border-0   transition-all duration-300;
+}
+
+input[type="radio"] + label {
+  @apply border-b-4  transition-all duration-300;
+}
+
+.p-opacity {
+  @apply text-gray-one  text-center text-[16px] font-semibold;
+}
+
+.btn-yellow {
+  @apply w-[288px] h-[48px] bg-yellow text-dark-blue p-3 z-50 rounded-full;
+}
+
+.btn-yellow-custom {
+  @apply w-fit h-[48px] bg-yellow text-dark-blue p-3 z-50 rounded-full;
+}
+
+.btn-yellow-two {
+  @apply bg-yellow text-dark-blue p-3 z-50 rounded-full w-full;
+}
+
+.btn-yellow-three {
+  @apply bg-yellow text-dark-blue  z-50 rounded-full;
+}
+
+.btn-bluedark {
+  @apply flex justify-center items-center  w-[288px] h-[48px] bg-dark-blue text-white p-3 rounded-full;
+}
+
+.input-div {
+  @apply bg-white flex flex-col z-30 md:w-[560px]  w-full h-[56px] py-2 px-4 rounded-md;
+}
+
+.input-label {
+  @apply text-primary text-xs font-light;
+}
+
+.input {
+  @apply outline-none text-dark-blue;
+}
+
+.title {
+  @apply text-center text-[28px] text-dark-blue;
+}
+
+.title-bold {
+  @apply text-center text-[28px] text-dark-blue font-extrabold;
+}
+
+.checkbox-wrapper-15 .cbx {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.checkbox-wrapper-15 .cbx span {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translate3d(0, 0, 0);
+}
+.checkbox-wrapper-15 .cbx span:first-child {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transform: scale(1);
+  vertical-align: middle;
+  border: 1px solid #ffffff;
+  transition: all 0.2s ease;
+}
+.checkbox-wrapper-15 .cbx span:first-child svg {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 6px;
+  fill: none;
+  stroke: white;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 16px;
+  stroke-dashoffset: 16px;
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+  transform: translate3d(0, 0, 0);
+}
+.checkbox-wrapper-15 .cbx span:first-child:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #506eec;
+  display: block;
+  transform: scale(0);
+  opacity: 1;
+  border-radius: 50%;
+  transition-delay: 0.2s;
+}
+.checkbox-wrapper-15 .cbx span:last-child {
+  margin-left: 8px;
+}
+.checkbox-wrapper-15 .cbx span:last-child:after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: #b9b8c3;
+  transform-origin: 0 0;
+  transform: scaleX(0);
+}
+.checkbox-wrapper-15 .cbx:hover span:first-child {
+  border-color: #3c53c7;
+}
+
+.checkbox-wrapper-15 .inp-cbx:checked + .cbx span:first-child {
+  border-color: #3c53c7;
+  background: #3c53c7;
+  animation: check-15 0.6s ease;
+}
+.checkbox-wrapper-15 .inp-cbx:checked + .cbx span:first-child svg {
+  stroke-dashoffset: 0;
+}
+.checkbox-wrapper-15 .inp-cbx:checked + .cbx span:first-child:before {
+  transform: scale(2.2);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+.checkbox-wrapper-15 .inp-cbx:checked + .cbx span:last-child {
+  color: #b9b8c3;
+  transition: all 0.3s ease;
+}
+.checkbox-wrapper-15 .inp-cbx:checked + .cbx span:last-child:after {
+  transform: scaleX(1);
+  transition: all 0.3s ease;
+}
+
+@keyframes check-15 {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.container-full {
+  display: grid;
+  grid-template-columns: auto 1f auto;
+}
+
+.popover-icon-pelu {
+  @apply min-w-[464px] h-[536px] rounded-[21px];
+}
+
+.popover {
+  @apply p-4 w-[464px] h-[426px] rounded-[20px];
+}
+
+.swal2-html-container {
+  @apply text-dark-blue font-light text-sm;
+}
+
+.popover-succes {
+  @apply w-[464px] h-[356px];
+}
+
+::selection {
+  background-color: #0ac254;
+  color: white;
+}
+
+.p-autocomplete {
+  @apply bg-white text-dark-blue;
+}
+
+.p-component {
+  @apply bg-white text-dark-blue  w-full  rounded-md z-40 shadow-md p-2;
+}
+
+.bg-second-primary {
+  @apply bg-[#f0f6f9];
+}
+
+.svg-spinners--180-ring {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z' stroke-width='0.5' stroke='%23000'%3E%3CanimateTransform attributeName='transform' dur='0.75s' repeatCount='indefinite' type='rotate' values='0 12 12;360 12 12'/%3E%3C/path%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.hidden-frame {
+  animation-name: animation-hidden;
+  animation-duration: 600ms;
+}
+
+@keyframes animation-hidden {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+

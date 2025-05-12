@@ -1,0 +1,22 @@
+<div
+  class="sticky bg-white  rounded-md duration-500 fade w-full max-h-[560px] max-w-lg overflow-y-scroll  z-[99] text-slate-500 font-light shadow-2xl flex flex-col  "
+  [class]="classSelect"
+  [ngClass]="{
+    'h-0': isClose,
+    'h-[350px]': !isClose
+  }"
+>
+  @if (isLoading) {
+    @for (load of ArrayPrueba; track $index) {
+      <div class="pl-2 hover:text-zinc-800 h-[24px]">
+        
+      </div>
+    }
+  } @else {
+    @for (item of data; track $index) {
+      <div class="pl-2 hover:text-zinc-800 p-2 hover:bg-zinc-100" [title]="item.name" (click)="seleccionar(item)" >
+        {{ item.name }}
+      </div>
+    }
+  }
+</div>

@@ -1,0 +1,1 @@
+Los servicios se van a empezar a generar como la infraestructura de angular, es decir por tipos ...... localStorage, sessionStorage etc

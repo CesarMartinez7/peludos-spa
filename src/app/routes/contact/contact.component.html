@@ -1,0 +1,86 @@
+<app-navbar ngSkipHydration  [typeActivate]="`null`" />
+<div
+  class=" h-svh  bg-primary text-dark-blue flex items-center justify-center flex-col fade" >
+  <img src="images/logo_SEGUROPULUDO_blanco.png" class="" alt="" />
+
+  <img
+    src="images/Gato-Amarillo@2x.png"
+    class="absolute hidden md:block z-0 left-[171px] top-[451px] w-[524px] h-[293px] "
+    alt="Foto gato amarillo cacorro"
+  />
+  
+
+
+  <form [formGroup]="formulario" class="flex flex-col gap-3 w-full md:w-[560px] p-3">
+    <h3 class="text-dark-blue text-[24px] text-center">Contáctanos</h3>
+    <div class="input-div">
+      <label class="input-label"> Nombre completo </label>
+      <input type="text" class="input w-full" formControlName="nombre" />
+    </div>
+    <div class="input-div">
+      <label class="input-label"> Correo electronico </label>
+      <input type="text" class="input" formControlName="correo" />
+    </div>
+    <div class="input-div">
+      <label class="input-label"> Telefono celular </label>
+      <input type="text" class="input" formControlName="telefono" />
+    </div>
+    <div class="z-30">
+      <textarea
+      formControlName="descripcion"
+        id="story"
+        name="story"
+        rows="5"
+        cols="33"
+        placeholder="Descripcion"
+        class="bg-white w-full z-40 md:w-[560px] rounded-md px-4 py-2 placeholder:text-xs text-sm placeholder:text-primary "
+      ></textarea
+      >
+    </div>
+    <label for="Option2" class="inline-flex items-start gap-3">
+      <div class="checkbox-wrapper-15">
+        <input
+          class="inp-cbx"
+          id="cbx-15"
+          type="checkbox"
+          style="display: none"
+        />
+        <label class="cbx" for="cbx-15">
+          <span>
+            <svg width="12px" height="9px" viewbox="0 0 12 9">
+              <polyline points="1 5 4 8 11 1"></polyline>
+            </svg>
+          </span>
+        </label>
+      </div>
+      <div>
+        <p class="mt-0.5 text-sm text-white">
+          Autorizo el tratamiento de mis datos y acepto la
+          <a href="" class="underline"
+            >Política de Tratamiento de Datos Personales</a
+          >
+          , así como los
+          <a href="" class="underline">Terminos y condiciones</a>.
+        </p>
+      </div>
+    </label>
+  </form> 
+
+  <!-- Fixed button bottom -->
+  
+</div>
+
+<div class="flex justify-between w-full sticky bottom-0">
+  <div
+    class="bg-white p-4 rounded-br-full rounded-tr-full w-[208px] h-[80px]"
+  >
+    <button routerLink="/"  class="border-2 rounded-full border-primary w-[176px] h-[48px]">
+      ATRAS
+    </button>
+  </div>
+  <div
+    class="bg-white p-4 rounded-bl-full rounded-tl-full w-[208px] h-[80px]"
+  >
+    <button class="btn-yellow-two w-[176px] h-[48px]" (click)="validarDatos()">ENVIAR</button>
+  </div>
+</div>

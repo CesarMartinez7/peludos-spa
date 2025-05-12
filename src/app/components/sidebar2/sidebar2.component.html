@@ -1,0 +1,10 @@
+
+  <div class="w-screen h-full white border-zinc-200 z-50">
+    <div id="mySidebar" class="sidebar  ">
+        <a  class="closebtn" (click)="closeNav()">&times;</a>
+        <img src="/images/logomundialblue.svg" alt="Logo white" class="w-[500px] ">
+        @for (route of  routes ; track $index) {
+          <a class="p-1.5 text-[14px] text-[#008bd4] uppercase"  [routerLink]="route.url" > {{route.name}} </a>
+        }
+      </div>
+  </div>

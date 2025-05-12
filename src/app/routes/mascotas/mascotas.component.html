@@ -1,0 +1,177 @@
+<div>
+  <main class="bg-white">
+    <app-navbar typeActivate="null" ngSkipHydration></app-navbar>
+    <div class="bg-white w-full h-24 border-yellow border-b-14"></div>
+
+    <div
+      class="w-full items-center flex-col flex relative bg-primary gap-5 min-h-screen"
+    >
+      <app-border-top Path="icons" NameFile="dog-log.svg" />
+
+      <img
+        src="images/nube.png"
+        class="2xl:left-[342px] duration-500 absolute top-[447px] xl:left-[135px] lg:left-[-1px] md:left-[-9px] z-30"
+        alt="Nube otra vez"
+      />
+      <img
+        src="images/nube.png"
+        class="2xl:left-[1331px] duration-500 2xl:top-[134px] w-[240px] h-[235px] absolute xl:left-[989px] lg:left-[860px] md:left-[689px]"
+        alt="Nube otra vez"
+      />
+
+      <h3 class="text-dark-blue title my-6">Cotización</h3>
+      @if (isLoading) {
+      <app-skeleton-card-mascotas />
+      }@else if (!isLoading && dataResponse.data.length === 0) {
+      <div class="rounded-3xl w-[592px] h-[160px] grid place-content-center bg-white">
+        <span class="text-[#cccc]">NO SE AH AGREGRADO MASCOTAS</span>
+      </div>
+      } @else { @for (data of dataResponse.data; track $index) {
+      <div class="w-[592px] min-h-[544px] rounded-4xl overflow-hidden z-40 flex-col gap-6  flex">
+        @for (item of data.info_pets; track $index) {
+        <div
+          class="bg-white w-[592px] min-h-[544px] rounded-4xl overflow-hidden z-40"
+        >
+          <div
+            class="shadow-xl m-4 bg-white shadow-[#d7e3f3] rounded-2xl h-full p-3 gap-3 flex flex-col"
+          >
+            <div
+              class="bg-yellow rounded-full shadow h-[48px] text-dark-blue flex justify-between items-center p-3 gap-3"
+              [ngClass]="{
+                `bg-[#27d6eb]`: item.type_pet.toLocaleLowerCase() === `gato`,
+                `bg-[#f8c845]`: item.type_pet.toLocaleLowerCase() !== `perro`
+              }"
+            >
+              <div class="flex gap-3 ">
+                <span class=" grid place-content-center">
+                  <img
+                    [src]="item.type_pet.toLocaleLowerCase()  === `gato` ? `/icons/icon-cat.svg` : `/icons/icon-dog.svg` "
+                    src="/icons/icon-cat.svg"
+                    class="w-[20px] h-[20px]"
+                    alt="Dog logo"
+                  />
+                </span>
+                <span class>
+                  {{ item.name }}
+                </span>
+              </div>
+              <button (click)="deletePlanOfPet(item.id_pet)">
+                <img
+                  src="icons/close.svg"
+                  class="w-[20px] h-[20px]"
+                  alt="closeimg"
+                />
+              </button>
+              
+            </div>
+            <div
+              class="bg-second-primary grid grid-cols-2 h-[64px] rounded-[14px] overflow-hidden p-3"
+            >
+              <div class="flex flex-col">
+                <span class="text-primary text-xs"> Género: </span>
+                <span class="font-semibold text-dark-blue">
+                  {{ item.gender }}
+                </span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-primary text-xs"> Raza: </span>
+                <span class="font-semibold text-dark-blue">
+                  {{ item.race }}
+                </span>
+              </div>
+            </div>
+            <div
+              class="bg-second-primary h-[56px] w-full rounded-[14px] flex justify-start items-center p-4"
+            >
+              <p class="uppercase text-dark-blue">Plan {{ item.plan }}</p>
+            </div>
+            <div class="flex justify-between text-dark-blue text-xs">
+              <span class="text-primary font-bold">{{ "Valor del plan" }}</span>
+              <span>{{ item.plan_value | currency }}</span>
+            </div>
+
+            <ul
+              class="list-none divide-y divide-dashed divide-[#dbf2f9] w-full"
+            >
+              @for (paquetes of item.assistances; track $index) {
+              <li class="flex justify-between text-dark-blue text-xs py-1.5">
+                <span class="text-primary font-bold">{{
+                  paquetes.nombre
+                }}</span>
+                <span class="">{{ paquetes.valor | currency }}</span>
+              </li>
+              }
+            </ul>
+
+            <div
+              class="bg-second-primary h-[56px] w-full rounded-[14px] flex justify-between items-center p-4 text-dark-blue"
+            >
+              <span class="text-dark-blue font-bold"> Valor total </span>
+              <span>
+                {{ item.total_value | currency }}
+              </span>
+            </div>
+            <div class="justify-center flex items-center-safe flex-col gap-3">
+              <button
+                (click)="changePLan(item.id_pet)"
+                class="button-border-primary-custom"
+              >
+                CAMBIAR DE PLAN
+              </button>
+              <button class="button-border-primary-custom" (click)="editPlanAddicionales()" >
+                EDITAR PAQUETES ADICIONALES
+              </button>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      } }
+
+
+      
+
+      <button class="btn-bluedark relative">
+        <span class="left-6 absolute"
+          ><img
+            src="icons/close2.svg"
+            class="w-[20px] h-[20px] rotate-44"
+            alt="closeimg"
+        /></span>
+        <span>AGREGAR MASCOTA</span>
+      </button>
+    </div>
+  </main>
+
+  <div
+    class="flex justify-between w-full bottom-0 sticky bg-primary h-full z-[100]"
+  >
+    <div
+      class="bg-white p-4 shadow-xl rounded-br-full rounded-tr-full w-[208px] h-[80px]"
+    >
+      <button
+        (click)="finishClose()"
+        class="border-2 rounded-full border-primary w-[176px] h-[48px]"
+      >
+        SALIR
+      </button>
+    </div>
+    <div
+      class="shadow-zinc-200 bg-white shadow-xl hidden-frame rounded-t-3xl flex flex-row w-[642px] h-[92px]"
+    >
+      <div class="grid w-full bg-[#f5fcff] rounded-full place-content-center">
+        <div class="p-4 flex justify-center flex-col items-center">
+          <p class="text-primary text-xs">Suscripcion Anual</p>
+          <h3 class="text-dark-blue">
+            {{ dataResponse.data[0].total ? "si esta sfdsfsfdfsssssssssssssssssssssssssssssssssssssssssssssssssss" : "no esta"  }}
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-white p-4 rounded-bl-full shadow-xl rounded-tl-full w-[208px] h-[80px]"
+    >
+      <button class="btn-yellow-two w-[176px] h-[48px]">SIGUIENTE</button>
+    </div>
+  </div>
+</div>

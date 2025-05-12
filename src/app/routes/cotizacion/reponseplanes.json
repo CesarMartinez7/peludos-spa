@@ -1,0 +1,191 @@
+{
+    "responseCode": 200,
+    "message": "success",
+    "data": [
+        {
+            "plans": [
+                {
+                    "value_name": "Beneficios",
+                    "cols": [
+                        {
+                            "id": 1,
+                            "name": "Estándar"
+                        },
+                        {
+                            "id": 2,
+                            "name": "Premium"
+                        }
+                    ]
+                }
+            ],
+            "annual_value": [
+                {
+                    "value_name": "Valor de tu seguro anual",
+                    "cols": [
+                        {
+                            "value": "$14.280"
+                        },
+                        {
+                            "value": "$17.850"
+                        }
+                    ]
+                }
+            ],
+            "coverages_and_assistances": [
+                {
+                    "text": "COBERTURAS",
+                    "rows": [
+                        {
+                            "text": "RC familiar (Daños y lesiones terceros)",
+                            "cols": [
+                                {
+                                    "insured_value": "$10.000.000",
+                                    "year_event": "Lí­mite por evento y vigencia"
+                                },
+                                {
+                                    "insured_value": "$15.000.000",
+                                    "year_event": "Lí­mite por evento y vigencia"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "RC mascotas (Daños y lesiones terceros)",
+                            "cols": [
+                                {
+                                    "insured_value": "$10.000.000",
+                                    "year_event": "Lí­mite por evento y vigencia"
+                                },
+                                {
+                                    "insured_value": "$15.000.000",
+                                    "year_event": "Lí­mite por evento y vigencia"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Muerte accidental de la mascota",
+                            "cols": [
+                                {
+                                    "insured_value": "$1.000.000",
+                                    "year_event": "Lí­mite por evento y vigencia"
+                                },
+                                {
+                                    "insured_value": "$1.500.000",
+                                    "year_event": "Lí­mite por evento y vigencia"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Gastos médicos",
+                            "cols": [
+                                {
+                                    "insured_value": "$500.000 evento / $2.000.000 vigencia",
+                                    "year_event": "Según valor asegurado"
+                                },
+                                {
+                                    "insured_value": "$750.000 evento / $3.000.000 vigencia",
+                                    "year_event": "Según valor asegurado"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Gastos de defensa",
+                            "cols": [
+                                {
+                                    "insured_value": "$2.000.000",
+                                    "year_event": "Lí­mite por evento y vigencia"
+                                },
+                                {
+                                    "insured_value": "$3.000.000",
+                                    "year_event": "Lí­mite por evento y vigencia"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "text": "ASISTENCIAS",
+                    "rows": [
+                        {
+                            "text": "Orientación médica veterinaria telefónica",
+                            "cols": [
+                                {
+                                    "insured_value": "Tiempo máximo por llamada 15 minutos",
+                                    "year_event": "Ilimitado"
+                                },
+                                {
+                                    "insured_value": "Tiempo máximo por llamada 15 minutos",
+                                    "year_event": "Ilimitado"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Consulta médica veterinaria a domicilio y/o red de veterinarias por emergencia",
+                            "cols": [
+                                {
+                                    "insured_value": "Previa autorización por telemedicina hasta $120.000",
+                                    "year_event": "3 Eventos por vigencia"
+                                },
+                                {
+                                    "insured_value": "Previa autorización por telemedicina hasta $120.000",
+                                    "year_event": "3 Eventos por vigencia"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Traslado de la mascota por emergencia: Traslado por accidente o enfermedad y/o traslado de la mascota por necesidad del afiliado",
+                            "cols": [
+                                {
+                                    "insured_value": "Hasta $120.000",
+                                    "year_event": "3 Eventos por vigencia"
+                                },
+                                {
+                                    "insured_value": "Hasta $120.000",
+                                    "year_event": "3 Eventos por vigencia"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Asistencia legal telefónica",
+                            "cols": [
+                                {
+                                    "insured_value": "Máximo 30 minutos por evento",
+                                    "year_event": "2 Eventos por vigencia"
+                                },
+                                {
+                                    "insured_value": "Máximo 30 minutos por evento",
+                                    "year_event": "2 Eventos por vigencia"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Asistencia de referencias info mascotas. Referencia y coordinación de adiestrador de perros",
+                            "cols": [
+                                {
+                                    "insured_value": "Limitado",
+                                    "year_event": "Limitado"
+                                },
+                                {
+                                    "insured_value": "Limitado",
+                                    "year_event": "Limitado"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Telemedicina veterinaria",
+                            "cols": [
+                                {
+                                    "insured_value": "Hasta $100.000",
+                                    "year_event": "6 Eventos por vigencia"
+                                },
+                                {
+                                    "insured_value": "Hasta $100.000",
+                                    "year_event": "6 Eventos por vigencia"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
