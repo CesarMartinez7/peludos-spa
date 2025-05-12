@@ -1,1 +1,165 @@
-<p>add-pet works!</p>
+<div class="bg-primary min-h-svh grid place-content-center">
+    <img src="images/logo_SEGUROPULUDO_blanco-1.png" alt="">
+    <h3 class="text-[24px] text-center ">Informacion Mascota</h3>
+  <form
+    [formGroup]="form"
+    class="flex flex-col gap-3 z-30 md:w-[560px] justify-center items-center"
+  >
+    <div
+      class="bg-white flex flex-col z-30 md:w-[560px] w-full h-[56px] py-2 px-4 rounded-md"
+    >
+      <label for="name" class="text-primary text-xs font-light"
+        >Nombre peludo</label
+      >
+      <input
+        id="name"
+        [type]="`text`"
+        formControlName="name"
+        class="outline-none text-dark-blue"
+      />
+    </div>
+
+    <!-- Section de grillas de el tipo de perro y el genero -->
+
+    <div class="grid w-full grid-cols-2 gap-2 mb-2.5 z-40">
+      <!-- PERRO -->
+      <input
+        type="radio"
+        name="type_pet"
+        id="perro"
+        value="1"
+        hidden
+        formControlName="type_pet"
+      />
+      <label
+        for="perro"
+        class="bg-white gap-3 border-b-4 text-dark-blue border-[#b2d9e0] rounded-md h-[56px] flex justify-center items-center cursor-pointer"
+      >
+        <img src="images/ICONO PERRO.svg" alt="Icon perrooo" />PERRO
+      </label>
+
+      <!-- GATO -->
+      <input
+        type="radio"
+        name="type_pet"
+        id="gato"
+        value="2"
+        hidden
+        formControlName="type_pet"
+      />
+      <label
+        for="gato"
+        class="bg-white gap-3 border-b-4 text-dark-blue border-[#b2d9e0] rounded-md h-[56px] flex justify-center items-center cursor-pointer"
+      >
+        <img src="images/Grupo 37872.svg" alt="Icon gatooo" />GATO
+      </label>
+
+      <!-- MACHO -->
+      <input
+        type="radio"
+        name="gender"
+        id="macho"
+        value="14"
+        hidden
+        formControlName="gender"
+      />
+      <label
+        for="macho"
+        class="bg-white gap-3 border-b-4 text-dark-blue border-[#b2d9e0] rounded-md h-[56px] flex justify-center items-center cursor-pointer"
+      >
+        <img src="icons/gen-macho.svg" width="20px" height="20px" alt="" />
+        MACHO
+      </label>
+
+      <!-- HEMBRA -->
+      <input
+        type="radio"
+        name="gender"
+        id="hembra"
+        value="15"
+        hidden
+        formControlName="gender"
+      />
+      <label
+        for="hembra"
+        class="bg-white gap-3 border-b-4 text-dark-blue border-[#b2d9e0] rounded-md h-[56px] flex justify-center items-center cursor-pointer"
+      >
+        <img src="icons/gen-hembra.svg" width="20px" height="20px" alt="" />
+        HEMBRA
+      </label>
+    </div>
+
+    <div
+      class="bg-white flex flex-col z-30 md:w-[560px] w-full h-[56px] py-2 px-4 rounded-md"
+    >
+      <label class="text-primary text-xs font-light">Edad</label>
+      <input
+        type="number"
+        formControlName="age"
+        class="outline-none text-dark-blue"
+      />
+    </div>
+
+    <div
+      (click)="onFocusTypeAge()"
+      class="bg-white flex flex-col z-40 relative md:w-[560px] w-full h-[56px] py-2 px-4 rounded-md"
+    >
+      <label class="text-primary text-xs font-light">Mes(es) / Año(s)</label>
+      <div>
+        <input
+          type="text"
+          [value]="this.nameTypeAge"
+          title="type_age"
+          disabled
+        />
+        <input type="text" name="type_age" formControlName="type_age" hidden />
+      </div>
+      <div
+        class="absolute z-[99] bg-white rounded-md duration-500 fade w-full max-h-[360px] max-w-lg overflow-y-scroll text-slate-500 font-light shadow-2xl flex flex-col"
+        [ngClass]="{
+            `hidden` : isCloseTypeEdadPets === true,
+            `block` : isCloseTypeEdadPets === false,
+            }"
+      >
+        @for (type_age of typeEdadResponse; track $index) {
+        <div
+          class="pl-2 hover:text-zinc-800 p-2 hover:bg-zinc-100"
+          (click)="actualizarTypeEdad(type_age.value, type_age.name)"
+        >
+          {{ type_age.name }}
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- RAZA SELECT -->
+
+    <div
+      class="bg-white relative cursor-pointer flex flex-col z-30 md:w-[560px] w-full py-2 h-[56px] px-4 rounded-md focus:ring-1 ring-amber-400"
+      (click)="onFocus()"
+    >
+      <label for="race" class="text-primary text-xs font-light"
+        >Raza peludito
+      </label>
+      <div class="flex justify-between w-full h-full items-center-safe">
+        <input
+          class="w-full text-dark-blue"
+          type="text"
+          [value]="nameRaceSelected"
+          title="selectedname"
+        />
+        <input class="w-full" type="text" hidden formControlName="race" />
+        <img src="icons/angle-top.svg" width="15" height="15" alt="" />
+      </div>
+      <app-select-custom
+        [data]="form.get(`type_pet`)?.value == 1 ? racesPeTs[0].dog_races  : racesPeTs[0].cat_races "
+        [isLoading]="isLoadingRacesPets"
+        [isClose]="isCloseRacePets"
+        (seleccionadoId)="actualizarRaza($event)"
+        classSelect="bg-red-300"
+      />
+    </div>
+
+    
+  </form>
+</div>
