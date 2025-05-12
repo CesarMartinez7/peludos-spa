@@ -10,7 +10,12 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { PetServices } from '../../services/pets/pets.service';
 @Component({
   selector: 'app-add-pet',
-  imports: [ SelectCustomComponent, ReactiveFormsModule, CommonModule, NavbarComponent],
+  imports: [
+    SelectCustomComponent,
+    ReactiveFormsModule,
+    CommonModule,
+    NavbarComponent,
+  ],
   templateUrl: './add-pet.component.html',
   styleUrl: './add-pet.component.css',
 })
@@ -29,20 +34,14 @@ export class AddPetComponent {
 
   form: FormGroup;
 
-
-  
-  RacesServices = inject(PetServices)
-
+  RacesServices = inject(PetServices);
 
   ngOnInit(): void {
-    
     this.RacesServices.getRacePet().subscribe((data) => {
       this.isLoadingRacesPets = false;
       this.racesPeTs = data.data;
     });
-    
   }
-
 
   typeEdadResponse = [
     { name: 'Mes', value: '21' },
@@ -98,5 +97,4 @@ export class AddPetComponent {
     this.valueIdRacePet = id_race;
     this.nameRaceSelected = name;
   }
-
 }
