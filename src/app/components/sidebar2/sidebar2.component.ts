@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { RoutesType } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+
 
 @Component({
   selector: 'app-sidebar2',

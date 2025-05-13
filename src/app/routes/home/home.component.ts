@@ -56,7 +56,7 @@ export class HomeComponent {
   privateUrlSetPeludo =
     'https://f74jiq3xx3.execute-api.us-east-1.amazonaws.com/dev/pets/set/peludo';
 
-  @ViewChild(Sidebar2Component, {static: false}) sidebar!: Sidebar2Component;
+  @ViewChild(Sidebar2Component, { static: false }) sidebar!: Sidebar2Component;
   @ViewChildren('bloque') bloques!: QueryList<ElementRef<HTMLDivElement>>;
   @ViewChild('listracepets') listapets!: ElementRef<HTMLDivElement>;
   @ViewChild('downloadebook') btndownloadebook!: ElementRef<HTMLAnchorElement>;
@@ -116,8 +116,7 @@ export class HomeComponent {
   }
 
   openSidebar() {
-    console.log("Estamos en el home funciton")
-    
+    console.log('Estamos en el home funciton');
     this.sidebar.openNav();
   }
 
@@ -185,6 +184,28 @@ export class HomeComponent {
     this.form.get('race')?.setValue(id_race);
     this.valueIdRacePet = id_race;
     this.nameRaceSelected = name;
+  }
+
+  angleTop() {
+    if (window.scrollY === 0) {
+      return;
+    } else {
+      window.scrollBy({
+        top: -1000,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  }
+
+  angleDown() {
+    
+      window.scrollBy({
+        top: 1000,
+        left: 0,
+        behavior: 'smooth',
+      });
+    
   }
 
   onFocus(): void {
@@ -300,15 +321,15 @@ export class HomeComponent {
         Swal.fire({
           title: 'Ouch,',
           text: `${err.error.message}`,
-          imageHeight:"232px",
-          imageWidth:"232px",
-          confirmButtonText: "CERRAR",
+          imageHeight: '232px',
+          imageWidth: '232px',
+          confirmButtonText: 'CERRAR',
           imageUrl: 'images/PERRO-CONOv2.png',
           customClass: {
             popup: 'popover-icon-pelu',
             title: 'text-[#27d6eb] text-[64px]',
             confirmButton: 'btn-yellow',
-            image: "bg-[#27d6eb] rounded-full"
+            image: 'bg-[#27d6eb] rounded-full',
           },
         });
         this.isSendingData = false;
@@ -322,8 +343,8 @@ export class HomeComponent {
   validarDataFormulario() {
     console.log(this.form.value);
     if (this.form.invalid) {
-      console.log(this.camposInvalidos["auth"]);
-      if(this.camposInvalidos["auth"]){
+      console.log(this.camposInvalidos['auth']);
+      if (this.camposInvalidos['auth']) {
         Swal.fire({
           title: 'ATENCIÓN',
           text: 'Debe aceptar las politicas de datos',
@@ -337,10 +358,8 @@ export class HomeComponent {
         });
       }
 
-
-      if(this.camposInvalidos)
-
-      this.camposInvalidos = this.obtenerInvalidControls2(this.form);
+      if (this.camposInvalidos)
+        this.camposInvalidos = this.obtenerInvalidControls2(this.form);
       Swal.fire({
         title: 'ATENCIÓN',
         text: 'Debe llenar correctamente todos los campos en rojo',

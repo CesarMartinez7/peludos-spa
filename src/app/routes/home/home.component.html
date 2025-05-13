@@ -1,4 +1,3 @@
-
 <app-navbar
   ngSkipHydration
   [typeActivate]="scrollingState()"
@@ -9,6 +8,19 @@
   <main
     class="w-full md:flex flex-col justify-center items-center bg-primary overflow-hidden"
   >
+    <div class="z-[999] flex gap-2 fixed bottom-6">
+      <button 
+        (click)="angleTop()"
+        title="top"
+        class="bg-white rounded-full text-primary w-[48px] shadow shadow-current h-[48px] grid place-content-center"> 
+        <img src="icons/angle-top.svg" class="w-[20px] h-[20px]" alt="">
+      </button>
+        <button title="down"
+        (click)="angleDown()"
+        class="bg-white rounded-full text-primary w-[48px] shadow shadow-current h-[48px] grid place-content-center">
+        <img src="icons/angle-down.svg" class="w-[20px] h-[20px]" alt="">
+      </button>
+    </div>
     <div class="flex md:hidden h-svh flex-col items-center justify-center">
       <img
         src="images/logo_SEGUROPULUDO_blanco.png"
