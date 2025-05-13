@@ -56,7 +56,7 @@ export class HomeComponent {
   privateUrlSetPeludo =
     'https://f74jiq3xx3.execute-api.us-east-1.amazonaws.com/dev/pets/set/peludo';
 
-  @ViewChild(Sidebar2Component) sidebar!: Sidebar2Component;
+  @ViewChild(Sidebar2Component, {static: false}) sidebar!: Sidebar2Component;
   @ViewChildren('bloque') bloques!: QueryList<ElementRef<HTMLDivElement>>;
   @ViewChild('listracepets') listapets!: ElementRef<HTMLDivElement>;
   @ViewChild('downloadebook') btndownloadebook!: ElementRef<HTMLAnchorElement>;
@@ -116,6 +116,8 @@ export class HomeComponent {
   }
 
   openSidebar() {
+    console.log("Estamos en el home funciton")
+    
     this.sidebar.openNav();
   }
 

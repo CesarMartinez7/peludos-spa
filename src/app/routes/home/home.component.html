@@ -1,3 +1,4 @@
+
 <app-navbar
   ngSkipHydration
   [typeActivate]="scrollingState()"
@@ -20,13 +21,13 @@
           class="block btn-yellow cursor-pointer"
           (click)="scrollTo(`compraseguro`)"
         >
-        ¡COMPRA TU SEGURO!
+          ¡COMPRA TU SEGURO!
         </button>
         <button
           class="block btn-bluedark cursor-pointer z-30"
           (click)="scrollTo(`planes`)"
         >
-        ¡CONOCE MÁS!
+          ¡CONOCE MÁS!
         </button>
       </div>
     </div>
@@ -95,13 +96,13 @@
           class="block md:absolute btn-yellow top-[623px] transition-transform md:left-[331px] lg:left-[450px] 2xl:left-[800px] 2xl:top-[623px] cursor-pointer xl:left-[585px]"
           (click)="scrollTo(`compraseguro`)"
         >
-        ¡COMPRA TU SEGURO!
+          ¡COMPRA TU SEGURO!
         </button>
         <button
           class="block md:absolute btn-bluedark top-[680px] transition-transform md:left-[331px] lg:left-[450px] xl:left-[585px] 2xl:left-[800px]"
           (click)="scrollTo(`compraseguro`)"
         >
-        ¡CONOCE MÁS!
+          ¡CONOCE MÁS!
         </button>
       </div>
     </div>
@@ -893,7 +894,7 @@
             `border-red-400 border ` : camposInvalidos[`type_document`] === true,
           }"
           (click)="onFocusGetDocument()"
-          class="bg-white flex flex-col md:w-[560px] cursor-pointer w-full h-[56px] py-2 px-4 rounded-md "
+          class="bg-white flex flex-col md:w-[560px] cursor-pointer w-full h-[56px] py-2 px-4 rounded-md"
         >
           <label class="text-primary text-xs font-light">Tipo documento</label>
 
@@ -946,21 +947,36 @@
             class="outline-none text-dark-blue disabled:bg-second-primary"
           />
         </div>
-
-        <!-- <div class="p-4">
-          <label class="flex items-start space-x-3 cursor-pointer text-white ">
+        <!-- Checkbox: COMUNICACIONES -->
+        <div class="p-2">
+          <label class="flex items-start space-x-3 cursor-pointer text-white">
             <input
               type="checkbox"
-              class="peer hidden p-2"
+              class="peer hidden"
               formControlName="comunications"
             />
             <div
-              class="w-5 h-5 mt-1 p-3 flex items-center justify-center rounded-full border border-white peer-checked:bg-white"
+              class="w-6 h-6 mt-1 flex items-center rounded-full justify-center p-1 border transition-colors"
               [ngClass]="{
-                `border-red-500 border` : camposInvalidos['comunications'] === true,
+                'border-white': !camposInvalidos['comunications'],
+                'border-red-500': camposInvalidos['comunications'] === true,
+                'bg-white': form.get('comunications')?.value
               }"
             >
-             
+              <svg
+                *ngIf="form.get('comunications')?.value"
+                class="w-6 h-6 text-primary"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
             </div>
             <p class="text-sm leading-snug">
               Acepto recibir comunicaciones comerciales y publicitarias
@@ -970,24 +986,28 @@
           </label>
         </div>
 
-        <div class="p-4">
+        <!-- Checkbox: TÉRMINOS -->
+        <div class="p-2">
           <label class="flex items-start space-x-3 cursor-pointer text-white">
             <input
               type="checkbox"
-              class="peer hidden p-2"
+              class="peer hidden"
               formControlName="auth_terminos"
             />
             <div
-              class="w-5 h-5 mt-1 p-3 flex items-center justify-center rounded-full border border-white "
+              class="w-6 h-6 mt-1 flex items-center justify-center border transition-colors p-1 rounded-full"
               [ngClass]="{
-                'border-red-500 border': camposInvalidos['auth_terminos'] === true,
+                'border-white': !camposInvalidos['auth_terminos'],
+                'border-red-500': camposInvalidos['auth_terminos'] === true,
+                'bg-white': form.get('auth_terminos')?.value
               }"
             >
               <svg
-                class="w-3 h-3 hidden"
+                *ngIf="form.get('auth_terminos')?.value"
+                class="w-6 h-6 text-primary"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
+                stroke-width="3"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -1003,73 +1023,7 @@
               condiciones.
             </p>
           </label>
-        </div> -->
-        
-        <!-- Checkbox: COMUNICACIONES -->
-<div class="p-4">
-  <label class="flex items-start space-x-3 cursor-pointer text-white">
-    <input
-      type="checkbox"
-      class="peer hidden"
-      formControlName="comunications"
-    />
-    <div
-      class="w-6 h-6 mt-1 flex items-center rounded-full justify-center p-1 border transition-colors"
-      [ngClass]="{
-        'border-white': !camposInvalidos['comunications'],
-        'border-red-500': camposInvalidos['comunications'] === true,
-        'bg-white': form.get('comunications')?.value
-      }"
-    >
-      <svg
-        *ngIf="form.get('comunications')?.value"
-        class="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        viewBox="0 0 24 24"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-      </svg>
-    </div>
-    <p class="text-sm leading-snug">
-      Acepto recibir comunicaciones comerciales y publicitarias personalizadas a través de los canales autorizados por Seguros Mundial.
-    </p>
-  </label>
-</div>
-
-<!-- Checkbox: TÉRMINOS -->
-<div class="p-4">
-  <label class="flex items-start space-x-3 cursor-pointer text-white">
-    <input
-      type="checkbox"
-      class="peer hidden"
-      formControlName="auth_terminos"
-    />
-    <div
-      class="w-6 h-6 mt-1 flex items-center justify-center  border transition-colors p-1 rounded-full"
-      [ngClass]="{
-        'border-white': !camposInvalidos['auth_terminos'],
-        'border-red-500': camposInvalidos['auth_terminos'] === true,
-        'bg-white': form.get('auth_terminos')?.value
-      }"
-    >
-      <svg
-        *ngIf="form.get('auth_terminos')?.value"
-        class="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        viewBox="0 0 24 24"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-      </svg>
-    </div>
-    <p class="text-sm leading-snug">
-      Autorizo el tratamiento de mis datos y acepto la Política de Tratamiento de Datos Personales, así como los Términos y condiciones.
-    </p>
-  </label>
-</div>
+        </div>
 
         <input
           [disabled]="isSendingData"
@@ -1081,6 +1035,5 @@
     </div>
   </div>
 
-  
   <app-footer />
 </div>

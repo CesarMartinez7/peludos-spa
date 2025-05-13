@@ -39,8 +39,11 @@ export class NavbarComponent {
   }
 
   openSidebarFunction(){
+      console.log("Se ejecuta la funcion")
+      console.log(document.getElementById("mySideBar"))
     if(this.openSideBar) {
       this.openSideBar()
+      this.openSideBar
     }
   }
 

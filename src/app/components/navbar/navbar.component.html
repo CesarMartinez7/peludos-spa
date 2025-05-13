@@ -3,7 +3,7 @@
   [ngClass]="typeActivate === 'activo' ? 'bg-primary text-white' :
               typeActivate === 'activo2' ? 'bg-white text-[#008bd4]' :
               'bg-white z-50 shadow-md text-dark-blue transition-all'"
-  class="p-4 md:px-4 flex flex-row justify-between w-full whitespace-nowrap sticky top-0 py-4 z-59 transition-all transition-discrete fade"
+  class="p-4 md:px-4 flex flex-row justify-between w-full whitespace-nowrap sticky top-0 py-4 z-59 transition-all transition-discrete fade aspect-auto "
 >
   @if (typeActivate === 'activo' || typeActivate === 'activo2') {
     <div class="items-center gap-2 justify-between w-full h-full flex flex-row transition-discrete transition-all duration-200">
@@ -43,7 +43,7 @@
               [ngClass]="typeActivate === 'activo' ? 'border-content' : 'border-content2'"
             >
               <a
-                [href]="item.url"
+                [routerLink]="item.url"
                 class="text-sm"
                 (click)="scrollTo(item.id)"
               >
