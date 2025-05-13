@@ -199,13 +199,11 @@ export class HomeComponent {
   }
 
   angleDown() {
-    
-      window.scrollBy({
-        top: 1000,
-        left: 0,
-        behavior: 'smooth',
-      });
-    
+    window.scrollBy({
+      top: 1000,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
 
   onFocus(): void {
@@ -236,7 +234,7 @@ export class HomeComponent {
 
   guardarRegistroTomador(callback: () => void): void {
     const body: SetRequestBodyTomador = {
-      id_managment: localStorage.getItem('id_managment') || '',
+      id_managment: this.StorageService.getSessionStorage("id_managment") || '' ,
       first_name: this.form.get('first_name')?.value,
       middle_name: this.form.get('middle_name')?.value,
       last_name: this.form.get('last_name')?.value,
@@ -289,15 +287,11 @@ export class HomeComponent {
     };
     this.RacesServices.setPeludo(body).subscribe({
       next: (response) => {
-        this.authServices.setTokenLocalStorage(
+        this.StorageService.setSessionStorage(
           'id_managment',
           response.data[0].id_managment
         );
-        this.authServices.setTokenLocalStorage(
-          'id_pet',
-          response.data[0].id_pet
-        );
-
+        this.StorageService.setSessionStorage('id_pet', response.data[0].id_pet);
         this.successCreatePet = true;
         this.guardarRegistroTomador(() => {
           if (this.successCreatePet && this.successCheckSarlaft) {

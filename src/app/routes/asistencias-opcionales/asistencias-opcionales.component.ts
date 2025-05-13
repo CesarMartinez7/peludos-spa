@@ -42,7 +42,7 @@ export class AsistenciasOpcionalesComponent {
       front_version: '1.0.0',
       id_managment: this.StorageServices.getLocalStorage("id_managment") || "",
       // id_pet: this.StorageServices.getLocalStorage("id_pet") || '',
-      id_pet: urlTree.queryParams["id_pet"] || 'HELLW BRO',
+      id_pet: urlTree.queryParams["id_pet"] || "",
       id_plan: Number(this.StorageServices.getSessionStorage("plan_id")),
       optional_assistances: JSON.parse(this.StorageServices.getSessionStorage('selected_plan') || ""),
     };
