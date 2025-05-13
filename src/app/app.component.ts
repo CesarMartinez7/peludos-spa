@@ -9,7 +9,7 @@ import { Sidebar2Component } from './components/sidebar2/sidebar2.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule, Sidebar2Component],
+  imports: [RouterOutlet, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
