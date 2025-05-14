@@ -33,14 +33,12 @@ export class NavbarComponent {
   scrollTo(id: string = 'porque') {
     const el = document.getElementById(id);
     if (el) {
-      console.log(el)
+   
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
   openSidebarFunction(){
-      console.log("Se ejecuta la funcion")
-      console.log(document.getElementById("mySideBar"))
     if(this.openSideBar) {
       this.openSideBar()
       this.openSideBar

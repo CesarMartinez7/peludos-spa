@@ -117,7 +117,6 @@ export class HomeComponent {
   }
 
   openSidebar() {
-    console.log('Estamos en el home funciton');
     this.sidebar.openNav();
   }
 
@@ -168,10 +167,9 @@ export class HomeComponent {
   actualizarTypeDocument(data: Data): void {
     const { id, name } = data;
     this.form.get('type_document')?.setValue(id);
-    console.log(`Actualizando el documento ${id} ${name}`);
     this.valueIdTypeDocument = id;
     this.nameDocumentSelected = name;
-    console.log(id, name);
+    
   }
 
   actualizarTypeEdad(id_type_age: string, name: string) {
@@ -225,11 +223,9 @@ export class HomeComponent {
   }
 
   onFocusTypeAge() {
-    if (this.isCloseTypeEdadPets) {
-      console.log('open');
+    if (this.isCloseTypeEdadPets) {      
       this.isCloseTypeEdadPets = false;
     } else {
-      console.log('close');
       this.isCloseTypeEdadPets = true;
     }
   }
@@ -273,7 +269,7 @@ export class HomeComponent {
   guardarRegistroPet(): void {
     this.isSendingData = true;
     if (this.isSendingData) {
-      console.log('Se esta enviando, por favor espera');
+
       this.form.disable();
     }
     const body: RequestBodyPeludo = {
@@ -344,7 +340,6 @@ export class HomeComponent {
   validarDataFormulario() {
     console.log(this.form.value);
     if (this.form.invalid) {
-      console.log(this.camposInvalidos['auth']);
       if (this.camposInvalidos['auth']) {
         Swal.fire({
           title: 'ATENCIÓN',

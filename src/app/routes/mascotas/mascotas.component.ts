@@ -38,7 +38,7 @@ export class MascotasComponent {
   }
 
   changePLan(id_pet: string): void {
-    console.log(id_pet);
+  
     this.RutesService.navigateByUrl(`/cotizacion/${id_pet}`);
   }
 
@@ -62,7 +62,6 @@ export class MascotasComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.deleteRight(id_pet);
-        console.log('Elemento eliminado');
       } else if (result.isDismissed) {
         // Acción si se presiona "No, cancelar" o se cierra
         
@@ -122,7 +121,7 @@ export class MascotasComponent {
 
     this.PetsServives.confirmPlansConfirmPet(body).subscribe((response) => {
       if (response.responseCode === 200) {
-        console.log('hOLA AQUI');
+        null
         if (response.data.length === 0) {
           this.dataResponse = response;
           this.isLoading = false;

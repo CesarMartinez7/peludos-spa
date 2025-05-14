@@ -23,7 +23,6 @@ export class SelectTypeDocument {
         this.ServicesTomador.getDocumentsTypes().subscribe((response) => {
             if(response.responseCode === 200){
                 this.DocumentsAvalibleResponse = response
-                console.log(`La data response es ${this.DocumentsAvalibleResponse}`)
             }else{
                 throw new Error("Error en la peticion")
             }

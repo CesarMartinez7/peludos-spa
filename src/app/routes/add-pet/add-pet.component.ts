@@ -77,7 +77,7 @@ export class AddPetComponent {
 
   onFocusTypeAge() {
     if (this.isCloseTypeEdadPets) {
-      console.log('open');
+      null
       this.isCloseTypeEdadPets = false;
     } else {
       console.log('close');

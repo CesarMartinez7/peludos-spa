@@ -58,7 +58,7 @@ export class AsistenciasOpcionalesComponent {
   ngOnInit() {
     this.numerosArrayGenerator = Array.from({ length: 4 }, (_, i) => i + 1);
     if (typeof window === 'undefined') {
-      console.log('No hay entorno');
+      null
     } else {
       this.PetServices.getAsistenciasPersonales().subscribe((data) => {
         this.DataResponseAsistencias = data;

@@ -62,10 +62,6 @@ export class CotizacionComponent {
 
   verParametros(){
     const routerThree = this.router.parseUrl(this.router.url)
-
-    console.log(routerThree.queryParams["id"] || null)
-    console.log(routerThree)
-    console.log(this.id_pet)
   }
 
   // ❌ Remplazar esto a sintaxis de angular.
