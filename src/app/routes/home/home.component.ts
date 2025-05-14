@@ -82,6 +82,7 @@ export class HomeComponent {
   alertMessage: string = '';
   haveImage : boolean = false
   imgSrc: string = '';
+  stringInnerHtml : string = ""
 
   typeEdadResponse = [
     { name: 'Mes', value: '21' },
@@ -331,22 +332,23 @@ export class HomeComponent {
       },
       error: (err) => {
         console.error('Error al guardar peludo', err);
-        Swal.fire({
-          title: 'Ouch,',
-          text: `${err.error.message}`,
-          imageHeight: '232px',
-          imageWidth: '232px',
-          confirmButtonText: 'CERRAR',
-          imageUrl: 'images/PERRO-CONOv2.png',
-          heightAuto: true,
-          color: '#ffff',
-          customClass: {
-            title: 'ouch-message',
-            popup: 'popover-icon-pelu',
-            confirmButton: 'btn-yellow',
-            image: 'bg-[#27d6eb] rounded-full',
-          },
-        });
+        this.showAlert("Ouch", err.error.message )
+        // Swal.fire({
+        //   title: 'Ouch,',
+        //   text: `${err.error.message}`,
+        //   imageHeight: '232px',
+        //   imageWidth: '232px',
+        //   confirmButtonText: 'CERRAR',
+        //   imageUrl: 'images/PERRO-CONOv2.png',
+        //   heightAuto: true,
+        //   color: '#ffff',
+        //   customClass: {
+        //     title: 'ouch-message',
+        //     popup: 'popover-icon-pelu',
+        //     confirmButton: 'btn-yellow',
+        //     image: 'bg-[#27d6eb] rounded-full',
+        //   },
+        // });
         this.isSendingData = false;
         if (!this.isSendingData) {
           this.form.enable();
@@ -358,8 +360,8 @@ export class HomeComponent {
   validarDataFormulario() {
     console.log(this.form.value);
     if (this.form.invalid) {
-      this.showAlert('algo salio mal', 'kdsfjd');
       if (this.camposInvalidos['auth']) {
+        this.showAlert('ATENCION', 'Debe aceptar las politicas de datos');
         // Swal.fire({
         //   title: 'ATENCIÓN',
         //   text: 'Debe aceptar las politicas de datos',

@@ -11,7 +11,9 @@ export class AlertModalComponent {
   @Input() title: string = 'Default Title';
   @Input() show: boolean = false;
   @Output() close = new EventEmitter();
-
+  @Input() haveImage: boolean = true
+  @Input() imageSrc : string = ""
+  @Input() stringInnerHtml : string = ""
 
   closeAlert(): void {
     console.log("Hola en")
