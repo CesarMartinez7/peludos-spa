@@ -16,7 +16,7 @@
           <img
             src="icons/navburger.svg"
             [src]="typeActivate === `activo` ? `icons/navburger-white.svg` : `icons/navburger-primary.svg`  "
-            alt=""
+            alt="Burger"
             class="w-[20px] h-[20px] text-pretty"
             [ngClass]="typeActivate === 'activo' ? 'text-white' : 'text-[#008bd4]'"
           />
@@ -64,7 +64,7 @@
 
           <button
             (click)="scrollTo('compraseguro')"
-            class="hidden md:flex justify-center items-center rounded-full text-xs md:text-md h-[36px] md:w-[200px]"
+            class="flex  md:flex justify-center items-center rounded-full text-xs md:text-md h-[36px] md:w-[200px] text-[10px] px-1.5 font-bold"
             [ngClass]="typeActivate === 'activo'
               ? 'border border-white text-white'
               : 'btn-yellow-three'"
