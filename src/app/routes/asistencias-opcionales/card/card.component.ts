@@ -21,27 +21,36 @@ export class CardComponent {
   StorageServices = inject(StorageService);
 
   totalPaquetesSeleccionados(monto: number, index: number, id_plan: number) {
-    console.log('Antes de empeza el proceso');
-    console.log(sessionStorage);
+    console.log("Antes de empeza el proceso")
+    console.log(sessionStorage)
     if (this.paquetesSeleccionados.includes(id_plan)) {
+      console.log("Ya esta y se va a scar de aqui")
       this.paquetesSeleccionados = this.paquetesSeleccionados.filter(
         (n) => n !== id_plan
       );
       this.saldoFinalPrueba = this.saldoFinalPrueba - monto;
+      console.log(sessionStorage)
       this.StorageServices.setSessionStorage(
         'selected_plan',
         JSON.stringify(this.paquetesSeleccionados)
       );
-
+      console.log("Asi quedo el sessinStorage ahora")
+      console.log(sessionStorage)
       return;
     } else {
-      this.paquetesSeleccionados = [...this.paquetesSeleccionados, id_plan];
+      console.log("No esta añadido y se añadira")
+      console.log("Valor de la variable antes:" , this.paquetesSeleccionados)
+      this.paquetesSeleccionados.push(id_plan);
+      console.log("Valor de la variable Despues:" , this.paquetesSeleccionados)
       this.StorageServices.setSessionStorage(
         'selected_plan',
         JSON.stringify(this.paquetesSeleccionados)
       );
       this.saldoFinalPrueba = this.saldoFinalPrueba + monto;
+      console.log("Asi quedo el session estorage en el")
+      console.log(sessionStorage)
     }
+    console.log("Terminado el proceso")
   }
 
   openTable(id: string | number) {
