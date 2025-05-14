@@ -228,7 +228,7 @@ input[type="radio"] + label {
 }
 
 .p-opacity {
-  @apply text-gray-one  text-center md:text-[16px] font-semibold text-sm ;
+  @apply text-gray-one  text-center md:text-[16px] font-light text-sm  ;
 }
 
 .btn-yellow {
@@ -244,6 +244,9 @@ input[type="radio"] + label {
     transform: scale(0.8);
     opacity: 0;
   }
+  50%{
+    transform: scale(1.1);
+  }
   100% {
     transform: scale(1);
     opacity: 1;
@@ -251,7 +254,7 @@ input[type="radio"] + label {
 }
 
 .animate-scale {
-  animation: scale 0.3s ease-out;
+  animation: scale 0.3s e;
 }
 
 

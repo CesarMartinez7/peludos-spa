@@ -7,8 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Sidebar2Component } from '../../components/sidebar2/sidebar2.component';
-import { AlertModalComponent } from '../../core/components/alert-modal/alert-modal.component';
+import { input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -30,6 +29,8 @@ import { SetRequestBodyTomador } from '../../services/tomador/tomador.models';
 import { DataResponseRaces, ObjectRace } from '../../services/pets/pets.models';
 import { SelectCustomComponent } from './components/select-custom/select-custom.component';
 import { SelectTypeDocument } from './components/select-TypeDocument/select-typedocument.component';
+import { Sidebar2Component } from '../../components/sidebar2/sidebar2.component';
+import { AlertModalComponent } from '../../core/components/alert-modal/alert-modal.component';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -62,6 +63,9 @@ export class HomeComponent {
   @ViewChildren('bloque') bloques!: QueryList<ElementRef<HTMLDivElement>>;
   @ViewChild('listracepets') listapets!: ElementRef<HTMLDivElement>;
   @ViewChild('downloadebook') btndownloadebook!: ElementRef<HTMLAnchorElement>;
+
+
+  firstname = input<string>()
 
   pdfService = inject(GetPdfService);
   scrollingState = signal('activo');
@@ -138,7 +142,10 @@ export class HomeComponent {
       window.addEventListener('scroll', () => {
         this.scrollingState.set('activo2');
         if (window.scrollY === 0) {
+          this.isTranslate = true
           this.scrollingState.set('activo');
+        }else{
+          this.isTranslate = false
         }
       });
     }
@@ -151,7 +158,6 @@ export class HomeComponent {
   }
 
   closeAlert() {
-    console.log("hola aqui en close")
     this.alertVisible = false;
   }
 
@@ -206,8 +212,11 @@ export class HomeComponent {
     this.nameRaceSelected = name;
   }
 
+  isTranslate = false
+
   angleTop() {
     if (window.scrollY === 0) {
+        null
       return;
     } else {
       window.scrollBy({
@@ -333,22 +342,7 @@ export class HomeComponent {
       error: (err) => {
         console.error('Error al guardar peludo', err);
         this.showAlert("Ouch", err.error.message )
-        // Swal.fire({
-        //   title: 'Ouch,',
-        //   text: `${err.error.message}`,
-        //   imageHeight: '232px',
-        //   imageWidth: '232px',
-        //   confirmButtonText: 'CERRAR',
-        //   imageUrl: 'images/PERRO-CONOv2.png',
-        //   heightAuto: true,
-        //   color: '#ffff',
-        //   customClass: {
-        //     title: 'ouch-message',
-        //     popup: 'popover-icon-pelu',
-        //     confirmButton: 'btn-yellow',
-        //     image: 'bg-[#27d6eb] rounded-full',
-        //   },
-        // });
+        
         this.isSendingData = false;
         if (!this.isSendingData) {
           this.form.enable();
@@ -362,32 +356,11 @@ export class HomeComponent {
     if (this.form.invalid) {
       if (this.camposInvalidos['auth']) {
         this.showAlert('ATENCION', 'Debe aceptar las politicas de datos');
-        // Swal.fire({
-        //   title: 'ATENCIÓN',
-        //   text: 'Debe aceptar las politicas de datos',
-        //   confirmButtonText: 'ENTENDIDO',
-        //   imageUrl: 'images/campana.png',
-        //   customClass: {
-        //     popup: 'popover',
-        //     title: 'title font-extrabold',
-        //     confirmButton: 'btn-yellow',
-        //   },
-        // });
       }
 
       if (this.camposInvalidos)
         this.camposInvalidos = this.obtenerInvalidControls2(this.form);
-      Swal.fire({
-        title: 'ATENCIÓN',
-        text: 'Debe llenar correctamente todos los campos en rojo',
-        confirmButtonText: 'ENTENDIDO',
-        imageUrl: 'images/campana.png',
-        customClass: {
-          popup: 'popover',
-          title: 'title font-extrabold',
-          confirmButton: 'btn-yellow',
-        },
-      });
+      this.showAlert("ATENCIÓN","Debe llenar todos los campos en rojo",)
       return;
     }
     this.guardarRegistroPet();

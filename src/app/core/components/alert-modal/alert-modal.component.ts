@@ -14,9 +14,11 @@ export class AlertModalComponent {
   @Input() haveImage: boolean = true
   @Input() imageSrc : string = ""
   @Input() stringInnerHtml : string = ""
+  @Input() classButtonConfirm: string = "btn-yellow"
+  @Input() classNameTitle: string = "text-dark-blue"
+  @Input() buttonText: string = "ENTENDIDO"
 
   closeAlert(): void {
-    console.log("Hola en")
     this.close.emit();
   }
 }

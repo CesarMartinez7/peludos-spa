@@ -1,12 +1,17 @@
-<div *ngIf="show" class="fixed inset-0 flex items-center justify-center bg-black/20  z-[9999] backdrop-blur-md ">
-    <div class="bg-white p-6 shadow-lg text-center max-w-md mx-auto animate-scale w-72 rounded-[21px]">
-        <div [innerHTML]="stringInnerHtml">
+<div *ngIf="show" class="fixed inset-0 flex items-center justify-center bg-black/20  z-[9999] backdrop-blur-md duration-300 transition-all">
+  <div class="bg-white p-4 shadow-lg text-center max-w-md relative mx-auto animate-scale xl:w-[464px] xl:h-[396px] rounded-[21px]  ">
+    <button title="close" class="cursor-pointer" (click)="closeAlert()">
+      <img src="icons/close.svg" alt="" class="right-5 absolute" width="10" height="10">
+    </button>
+        <div class="flex  justify-center items-center" [innerHTML]="stringInnerHtml">
         </div>
-        <img src="images/campana.png" alt=""  >
-      <h2 class="text-2xl font-semibold mb-2  ">{{ title }}</h2>
-      <p class="text-dark-blue mb-4 ">{{ message }}</p>
-      <button (click)="closeAlert()" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-        OK
+        <div class="m-6">
+          <img src="images/campana.png" alt="campana.png" class="mx-auto " >
+        </div>
+      <h2 class="text-2xl font-semibold mb-2 " [class]="classNameTitle" >{{ title }}</h2>
+      <p class="text-dark-blue mb-4 text-sm  ">{{ message }}</p>
+      <button (click)="closeAlert()" [class]="classButtonConfirm" >
+        {{buttonText}}
       </button>
     </div>
   </div>

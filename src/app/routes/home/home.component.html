@@ -6,13 +6,14 @@
 <div class="overflow-auto" id="maini" #main style="overflow-x: hidden">
   <app-sidebar2 />
   <main
-    class="w-full md:flex flex-col justify-center items-center bg-primary overflow-hidden"
+    class="w-full md:flex flex-col justify-center items-center bg-primary overflow-hidden "
   >
-    <div class="z-[999] flex gap-2 fixed bottom-6">
+    <div class="z-[999] flex gap-2 fixed bottom-6 ">
       <button
         (click)="angleTop()"
         title="top"
-        class="bg-white rounded-full text-primary w-[48px] shadow-md h-[48px] grid place-content-center"
+        class="bg-white rounded-full text-primary w-[48px] shadow-md h-[48px] grid place-content-center "
+        
       >
         <img
           src="icons/angle-top-primary.svg"
@@ -23,7 +24,8 @@
       <button
         title="down"
         (click)="angleDown()"
-        class="bg-white rounded-full text-primary w-[48px] shadow-md h-[48px] grid place-content-center"
+        class="bg-white rounded-full text-primary w-[48px] shadow-md h-[48px] grid place-content-center duration-300 transition-all"
+         
       >
         <img
           src="icons/angle-down-primary.svg"
@@ -621,14 +623,14 @@
               "
             />
           </div>
-          <p class="text-[20px] text-dark-blue w-[176px] h-[48px] text-center">
-            Experiencias únicas
+          <p class="text-[20px] text-dark-blue w-[176px] h-[48px] dtext-center">
+d            Experiencias únicas
           </p>
         </div>
       </div>
     </div>
 
-    <p class="p-opacity w-auto md:w-[944px] h-[44px] md:mt-16">
+    <p class="p-opacity w-auto md:w-[944px] h-[44px] md:mt-16 font-light ">
       Con Seguro Peludo tienes acceso a un club de beneficios digitales en
       diferentes establecimientos del país; mejor dicho, beneficios que vas a
       poder convertir en experiencias únicas e inolvidables.
@@ -843,7 +845,7 @@
           />
         </div>
 
-        <!-- Informacion  del tomador -->
+          <!-- Informacion  del tomador -->
 
         <h3 class="text-dark-blue text-[20px] font-bold">
           Informacion tomador
