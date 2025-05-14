@@ -7,6 +7,7 @@ import { BodyRequestAddSetPlan } from '../../services/pets/pets.models';
 import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 import { CardSkeletonComponent } from './skeletons/card-skeleton.component';
 import { BorderTopComponent } from '../../components/border-top/border-top.component';
+import { CardComponent } from './card/card.component';
 import {
   Component,
   ElementRef,
@@ -19,7 +20,7 @@ import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-asistencias-opcionales',
-  imports: [NavbarComponent, CommonModule, CardSkeletonComponent, BorderTopComponent],
+  imports: [NavbarComponent, CommonModule, CardSkeletonComponent, BorderTopComponent, CardComponent],
   templateUrl: './asistencias-opcionales.component.html',
   styleUrl: './asistencias-opcionales.component.css',
 })

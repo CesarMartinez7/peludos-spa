@@ -1,0 +1,111 @@
+<div
+        #card
+        [attr.id]="asistencias.id + '_' + asistencias.name"
+        data-selected="false"
+        class="md:w-[560px] text-dark-blue  shadow-xl shadow-cyan/5 flex-col rounded-2xl overflow-hidden"
+      >
+        <div class="duration-300 transition-all" (click)="openTable(asistencias.id)" [ngClass]="{
+          `incluido`: paquetesSeleccionados.includes(asistencias.id),
+          `not-incluido`: !paquetesSeleccionados.includes(asistencias.id)
+        }" >
+          <div class="flex-row flex justify-between items-center">
+            <div class="w-[33px] h-[33px] bg-[#46bccb] rounded-full grid place-content-center transition-all duration-300" [ngClass]="{
+              `not-incluido-dog-card`: !paquetesSeleccionados.includes(asistencias.id) ,
+              `incluido-dog-card`: paquetesSeleccionados.includes(asistencias.id) ,
+
+            }" >
+              <img  
+                src="icons/dog-log.svg"
+                alt="Logo Dog -- persistente"
+                class="z-20 w-[20px] h-[20px]"
+              />
+
+            </div>
+
+            <div class="text-[16px] text-center pt-1 block">
+              <div>
+                <span class="text-center w-full">{{ asistencias.name }}</span>
+                <span> - </span>
+                <span class="text-center w-full">{{
+                  asistencias.value | currency
+                }}</span>
+              </div>
+              <span class="font-light text-xs text-shadow">{{
+                paquetesSeleccionados.includes(asistencias.id) ? "Incluido" : "No incluido"
+              }}</span>
+            </div>
+            <div>
+              <img src="icons/angle-down.svg" alt="" width="20" height="20" />
+            </div>
+          </div>
+        </div>
+        <!-- Wrapper aqui -->
+        <div
+          class="grid shadow shadow-[#eaf2ff] grid-cols-2 divide-x divide-zinc-100 max-h-0 overflow-hidden duration-700 ease-in-out transition-all"
+          [id]="asistencias.id"
+        >
+          <!-- Columna 1 -->          
+          
+          <div class="grid grid-cols-1 divide-y divide-zinc-100">
+            <div class=" text-sm min-h-[52px] font-semibold px-3 flex w-full  text-white bg-[#66b9e5] justify-start items-center">
+                Asistencias
+            </div>
+            @for (item of asistencias.assistances; track $index) {
+            <div
+              class=" font-light text-sm min-h-[72px] px-3 flex w-full  justify-start items-center"
+              [ngClass]="{
+                        `is-impar`  :  $index % 2 === 0,
+                        `not-impar` : $index % 2 !== 0
+                      }"
+            >
+              {{ item.assistance_name }}
+            </div>
+            }
+          </div>
+          <!-- Columna2 -->
+          <div class="grid grid-cols-1 divide-y divide-zinc-100">
+            <div class=" text-sm min-h-[52px] font-semibold px-3 flex w-full  text-white bg-[#66b9e5] justify-start items-center">
+              Descripción
+          </div>
+
+
+            @for (items of asistencias.assistances; track $index;  ) {
+            <div>
+              @for (item of items.description; track $index; let indexOne = $index   ) {
+              <div
+                class="flex flex-col justify-center items-center p-2.5 font-light text-sm h-[72px] "
+                [ngClass]="{
+                              `not-impar`  : $index % 2 === 0,
+                              `bg-red-300`: $index % 2 !== 0
+                            }"
+              >
+                <span class="font-bold">{{ item.insured_value }}</span>
+                <span class="text-xs">{{ item.year_event }}</span>
+                
+              </div>
+              }
+            </div>
+            }
+          </div>
+        </div>
+        <!-- Fin wrapper -->
+
+
+        @if (!paquetesSeleccionados.includes(asistencias.id)) {
+          <div class="bg-white h-[72px] grid place-content-center-safe">
+            <button
+              class="border flex font-bold items-center p-1 text-md justify-center border-primary rounded-full h-[48px] w-[272px] text-[14px] text-dark-blue cursor-pointer"
+              (click)="totalPaquetesSeleccionados(asistencias.value ,$index, asistencias.id)"
+              
+            >
+              !LO QUIERO! {{asistencias.id}}
+            </button>
+          </div>
+        }@else {
+          <div class="bg-white h-[72px] flex justify-start items-center p-4 font-light gap-3 text-sm">
+            <img src="icons/cruz.svg" class="w-[20px] h-[24px]" alt="Cruz icon">
+            <button class="underline cursor-pointer" (click)="totalPaquetesSeleccionados(asistencias.value, $index, asistencias.id)">Ya no lo quiero {{asistencias.id}} </button>
+          </div>
+        }
+        
+      </div>
