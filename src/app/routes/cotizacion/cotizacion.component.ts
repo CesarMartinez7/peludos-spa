@@ -89,7 +89,7 @@ export class CotizacionComponent {
 
   redirectToNext() {
     this.router.navigateByUrl(
-      `/asistencias-opcionales/${this.StorageService.getLocalStorage(
+      `/asistencias-opcionales/${this.StorageService.getSessionStorage(
         'id_managment'
       )}`
     );

@@ -116,7 +116,7 @@ export class MascotasComponent {
   getDataPlanConfirmPet() {
     const body: BodyRequestConfirmPlanPet = {
       front_version: '1.0.0',
-      id_managment: this.StorageService.getLocalStorage('id_managment') || '',
+      id_managment: this.StorageService.getSessionStorage('id_managment') || '',
     };
 
     this.PetsServives.confirmPlansConfirmPet(body).subscribe((response) => {

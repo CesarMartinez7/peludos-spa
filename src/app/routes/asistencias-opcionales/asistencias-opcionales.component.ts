@@ -40,8 +40,7 @@ export class AsistenciasOpcionalesComponent {
     const urlTree = this.ROUTER.parseUrl(this.ROUTER.url)
     const body: BodyRequestAddSetPlan = {
       front_version: '1.0.0',
-      id_managment: this.StorageServices.getLocalStorage("id_managment") || "",
-      // id_pet: this.StorageServices.getLocalStorage("id_pet") || '',
+      id_managment: this.StorageServices.getSessionStorage("id_managment") || "",
       id_pet: urlTree.queryParams["id_pet"] || "",
       id_plan: Number(this.StorageServices.getSessionStorage("plan_id")),
       optional_assistances: JSON.parse(this.StorageServices.getSessionStorage('selected_plan') || ""),
