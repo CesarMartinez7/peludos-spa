@@ -4,7 +4,7 @@ import { ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetServices } from '../../services/pets/pets.service';
 import { BodyRequestAddSetPlan } from '../../services/pets/pets.models';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 import { CardSkeletonComponent } from './skeletons/card-skeleton.component';
 import { BorderTopComponent } from '../../components/border-top/border-top.component';
 import {

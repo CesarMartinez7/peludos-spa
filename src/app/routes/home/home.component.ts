@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Sidebar2Component } from '../../components/sidebar2/sidebar2.component';
+import { AlertModalComponent } from '../../core/components/alert-modal/alert-modal.component';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -20,8 +21,8 @@ import { RequestBodyPeludo } from '../../services/pets/pets.models';
 import { StorageService } from '../../services/storage/storage.service';
 import { TomadorService } from '../../services/tomador/tomador.service';
 import { coberturas, asistencias, asistenciasPersonales } from './layers';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../core/components/footer/footer.component';
+import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 import ResponseGetTypeDocument, {
   Data,
 } from '../../services/tomador/tomador.models';
@@ -48,6 +49,7 @@ import {
     Sidebar2Component,
     SelectCustomComponent,
     SelectTypeDocument,
+    AlertModalComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -71,8 +73,15 @@ export class HomeComponent {
   typesDocument!: ResponseGetTypeDocument;
   asistencias = asistencias;
   asistenciasPersonales = asistenciasPersonales;
-  coberturas  = coberturas;
-  indexPage : number = 0
+  coberturas = coberturas;
+  indexPage: number = 0;
+
+  // Props Alertas  ⚠️
+  alertVisible: boolean = false;
+  alertTitle: string = '';
+  alertMessage: string = '';
+  haveImage : boolean = false
+  imgSrc: string = '';
 
   typeEdadResponse = [
     { name: 'Mes', value: '21' },
@@ -93,7 +102,7 @@ export class HomeComponent {
   nameDocumentSelected: string = '';
   valueIdTypeDocument!: number;
 
-  // Instancia de formGroup para utilizar con el formBuild
+  
   form: FormGroup;
 
   StorageService = inject(StorageService);
@@ -101,7 +110,8 @@ export class HomeComponent {
   RacesServices = inject(PetServices);
   isSendingData: boolean = false;
   isDownload: boolean = false;
-  // Estados de la creacion de el peludo y la del usuario
+  
+
   successCreatePet: boolean = false;
   successCheckSarlaft: boolean = false;
 
@@ -131,6 +141,17 @@ export class HomeComponent {
         }
       });
     }
+  }
+
+  showAlert(title: string, message: string) {
+    this.alertTitle = title;
+    this.alertMessage = message;
+    this.alertVisible = true;
+  }
+
+  closeAlert() {
+    console.log("hola aqui en close")
+    this.alertVisible = false;
   }
 
   constructor(private fb: FormBuilder, private route: Router) {
@@ -169,7 +190,6 @@ export class HomeComponent {
     this.form.get('type_document')?.setValue(id);
     this.valueIdTypeDocument = id;
     this.nameDocumentSelected = name;
-    
   }
 
   actualizarTypeEdad(id_type_age: string, name: string) {
@@ -185,7 +205,6 @@ export class HomeComponent {
     this.nameRaceSelected = name;
   }
 
-  
   angleTop() {
     if (window.scrollY === 0) {
       return;
@@ -223,7 +242,7 @@ export class HomeComponent {
   }
 
   onFocusTypeAge() {
-    if (this.isCloseTypeEdadPets) {      
+    if (this.isCloseTypeEdadPets) {
       this.isCloseTypeEdadPets = false;
     } else {
       this.isCloseTypeEdadPets = true;
@@ -269,7 +288,6 @@ export class HomeComponent {
   guardarRegistroPet(): void {
     this.isSendingData = true;
     if (this.isSendingData) {
-
       this.form.disable();
     }
     const body: RequestBodyPeludo = {
@@ -301,7 +319,7 @@ export class HomeComponent {
               JSON.stringify(body)
             );
             this.route.navigateByUrl(
-              `cotizacion/${this.StorageService.getSessionStorage("id_pet")}`
+              `cotizacion/${this.StorageService.getSessionStorage('id_pet')}`
             );
           }
         });
@@ -321,10 +339,10 @@ export class HomeComponent {
           confirmButtonText: 'CERRAR',
           imageUrl: 'images/PERRO-CONOv2.png',
           heightAuto: true,
-          color: "#ffff",
+          color: '#ffff',
           customClass: {
             title: 'ouch-message',
-            popup: "popover-icon-pelu",
+            popup: 'popover-icon-pelu',
             confirmButton: 'btn-yellow',
             image: 'bg-[#27d6eb] rounded-full',
           },
@@ -340,18 +358,19 @@ export class HomeComponent {
   validarDataFormulario() {
     console.log(this.form.value);
     if (this.form.invalid) {
+      this.showAlert('algo salio mal', 'kdsfjd');
       if (this.camposInvalidos['auth']) {
-        Swal.fire({
-          title: 'ATENCIÓN',
-          text: 'Debe aceptar las politicas de datos',
-          confirmButtonText: 'ENTENDIDO',
-          imageUrl: 'images/campana.png',
-          customClass: {
-            popup: 'popover',
-            title: 'title font-extrabold',
-            confirmButton: 'btn-yellow',
-          },
-        });
+        // Swal.fire({
+        //   title: 'ATENCIÓN',
+        //   text: 'Debe aceptar las politicas de datos',
+        //   confirmButtonText: 'ENTENDIDO',
+        //   imageUrl: 'images/campana.png',
+        //   customClass: {
+        //     popup: 'popover',
+        //     title: 'title font-extrabold',
+        //     confirmButton: 'btn-yellow',
+        //   },
+        // });
       }
 
       if (this.camposInvalidos)

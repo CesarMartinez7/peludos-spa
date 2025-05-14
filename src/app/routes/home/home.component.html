@@ -25,7 +25,7 @@
       <img
         src="images/logo_SEGUROPULUDO_blanco.png"
         alt="Imagen de peludos"
-        (click)="openSidebar()"
+        (click)="closeAlert()"
       />
       <img src="images/Grupo37891.svg" alt="" />
       <div class="w-full flex flex-col gap-3 mt-12 items-center justify-center">
@@ -148,6 +148,8 @@
       ¿Por qué Seguro Peludo?
     </h2>
     <!-- Imagenes aqui -->
+
+    <button (click)="showAlert(`whow`,`whowa`)">Touch me</button>
 
     <img
       src="images/nube.png"
@@ -1047,5 +1049,6 @@
     </div>
   </div>
 
+  <app-alert-modal [show]="alertVisible" [message]="alertMessage" [title]="alertTitle" (close)="closeAlert()" />
   <app-footer />
 </div>

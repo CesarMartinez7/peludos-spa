@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 import { StorageService } from '../../services/storage/storage.service';
 import { PetServices } from '../../services/pets/pets.service';
 import { CurrencyPipe } from '@angular/common';

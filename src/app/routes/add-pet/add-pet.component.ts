@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import { DataResponseRaces } from '../../services/pets/pets.models';
 import { CommonModule } from '@angular/common';
 import { ObjectRace } from '../../services/pets/pets.models';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 import { PetServices } from '../../services/pets/pets.service';
 @Component({
   selector: 'app-add-pet',
@@ -80,7 +80,7 @@ export class AddPetComponent {
       null
       this.isCloseTypeEdadPets = false;
     } else {
-      console.log('close');
+  
       this.isCloseTypeEdadPets = true;
     }
   }

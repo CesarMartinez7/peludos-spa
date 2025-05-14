@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 @Component({
   selector: 'app-politicas',
   imports: [NavbarComponent],

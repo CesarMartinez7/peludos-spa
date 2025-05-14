@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetPdfService } from '../../services/pdf/get-pdf.service';
 import { Component, ElementRef, inject, signal } from '@angular/core';
 import { StorageService } from '../../services/storage/storage.service';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 import { LoadingTableComponent } from '../../components/loading-table/loading-table.component';
 import { ActivatedRoute } from '@angular/router';
 @Component({
