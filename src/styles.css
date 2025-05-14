@@ -17,6 +17,10 @@
   background: white;
 }
 
+.ouch-message{
+  @apply text-primary text-[64px]
+}
+
 .not-impar {
   background: #f5fcff;
 }
@@ -339,13 +343,20 @@ input[type="radio"] + label {
   }
 }
 
+
+body.swal2-shown > [aria-hidden='true'] {
+  transition: 0.1s filter;
+  filter: blur(3px);
+}
+
+
 .container-full {
   display: grid;
   grid-template-columns: auto 1f auto;
 }
 
 .popover-icon-pelu {
-  @apply min-w-[464px] h-[536px] rounded-[21px];
+  @apply max-w-[464px] h-auto rounded-[21px] ;
 }
 
 .popover {

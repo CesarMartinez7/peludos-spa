@@ -71,7 +71,8 @@ export class HomeComponent {
   typesDocument!: ResponseGetTypeDocument;
   asistencias = asistencias;
   asistenciasPersonales = asistenciasPersonales;
-  coberturas = coberturas;
+  coberturas  = coberturas;
+  indexPage : number = 0
 
   typeEdadResponse = [
     { name: 'Mes', value: '21' },
@@ -186,6 +187,7 @@ export class HomeComponent {
     this.nameRaceSelected = name;
   }
 
+  
   angleTop() {
     if (window.scrollY === 0) {
       return;
@@ -234,7 +236,7 @@ export class HomeComponent {
 
   guardarRegistroTomador(callback: () => void): void {
     const body: SetRequestBodyTomador = {
-      id_managment: this.StorageService.getSessionStorage("id_managment") || '' ,
+      id_managment: this.StorageService.getSessionStorage('id_managment') || '',
       first_name: this.form.get('first_name')?.value,
       middle_name: this.form.get('middle_name')?.value,
       last_name: this.form.get('last_name')?.value,
@@ -291,7 +293,10 @@ export class HomeComponent {
           'id_managment',
           response.data[0].id_managment
         );
-        this.StorageService.setSessionStorage('id_pet', response.data[0].id_pet);
+        this.StorageService.setSessionStorage(
+          'id_pet',
+          response.data[0].id_pet
+        );
         this.successCreatePet = true;
         this.guardarRegistroTomador(() => {
           if (this.successCreatePet && this.successCheckSarlaft) {
@@ -300,7 +305,7 @@ export class HomeComponent {
               JSON.stringify(body)
             );
             this.route.navigateByUrl(
-              `cotizacion/${localStorage.getItem('id_managment')}`
+              `cotizacion/${this.StorageService.getSessionStorage("id_pet")}`
             );
           }
         });
@@ -319,9 +324,11 @@ export class HomeComponent {
           imageWidth: '232px',
           confirmButtonText: 'CERRAR',
           imageUrl: 'images/PERRO-CONOv2.png',
+          heightAuto: true,
+          color: "#ffff",
           customClass: {
-            popup: 'popover-icon-pelu',
-            title: 'text-[#27d6eb] text-[64px]',
+            title: 'ouch-message',
+            popup: "popover-icon-pelu",
             confirmButton: 'btn-yellow',
             image: 'bg-[#27d6eb] rounded-full',
           },

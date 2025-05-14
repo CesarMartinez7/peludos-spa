@@ -42,9 +42,6 @@ export class AuthService {
     return this.http.get(this.apiUrl)
   }
 
-  private saveLocalStorage(token: string): void {
-    localStorage.setItem('token', token);
-  }
 
   getTokenLocalStorage(name: string){
     return localStorage.getItem(name) || ""
